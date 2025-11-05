@@ -32,11 +32,12 @@ class WARRIOR_API UDataAsset_InputConfig : public UDataAsset
 	GENERATED_BODY()
 	
 public:
+	// 编辑器中配置好的
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UInputMappingContext* DefaultMappingContext;
-	
+	// 编辑器中配置好的
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (TitleProperty = "InputTag"))
 	TArray<FWarriorInputActionConfig> NativeInputActions;
 
-	UInputAction* FindNativeInputActionByTag(const FGameplayTag& InInputTag);
+	UInputAction* FindNativeInputActionByTag(const FGameplayTag& InInputTag) const;
 };

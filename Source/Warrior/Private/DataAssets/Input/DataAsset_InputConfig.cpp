@@ -5,7 +5,7 @@
 
 
 // 查找匹配标签的动作
-UInputAction* UDataAsset_InputConfig::FindNativeInputActionByTag(const FGameplayTag& InInputTag)
+UInputAction* UDataAsset_InputConfig::FindNativeInputActionByTag(const FGameplayTag& InInputTag) const
 {
 	for (const FWarriorInputActionConfig& InputActionConfig : NativeInputActions)
 	{
