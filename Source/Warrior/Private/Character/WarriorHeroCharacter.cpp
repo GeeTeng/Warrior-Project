@@ -12,6 +12,8 @@
 #include "DataAssets/Input/DataAsset_InputConfig.h"
 
 #include "WarriorDebugHelper.h"
+#include "AbilitySystem/WarriorAbilitySystemComponent.h"
+#include "DataAssets/StartUpData/DataAsset_StartUpDataBase.h"
 
 AWarriorHeroCharacter::AWarriorHeroCharacter()
 {
@@ -37,6 +39,18 @@ AWarriorHeroCharacter::AWarriorHeroCharacter()
 	
 }
 
+void AWarriorHeroCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	if (!CharacterStartUpData.IsNull())
+	{
+		if (UDataAsset_StartUpDataBase* LoadedData = CharacterStartUpData.LoadSynchronous())
+		{
+			LoadedData->GiveToAbilitySystemComponent(WarriorAbilitySystemComponent);
+		}
+	}
+}
+
 void AWarriorHeroCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	checkf(InputConfigDataAsset, TEXT("Forget to assign inputconfig data asset."));
@@ -52,7 +66,6 @@ void AWarriorHeroCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInp
 void AWarriorHeroCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	Debug::Print(TEXT("WarriorHeroCharacter::BeginPlay"));
 }
 
 void AWarriorHeroCharacter::Input_Move(const FInputActionValue& InputActionValue)
