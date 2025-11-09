@@ -6,7 +6,7 @@
 #include "AbilitySystem/WarriorAbilitySystemComponent.h"
 #include "AbilitySystem/Abilities/WarriorGameplayAbility.h"
 
-
+// 负责通用能力
 void UDataAsset_StartUpDataBase::GiveToAbilitySystemComponent(UWarriorAbilitySystemComponent* InASCToGive,
                                                               int32 ApplyLevel)
 {
@@ -22,7 +22,7 @@ void UDataAsset_StartUpDataBase::GrantAbilities(const TArray<TSubclassOf<UWarrio
 	{
 		return;
 	}
-	// 遍历每一个能力类，创建spec 设置来源和等级 再调用giveability将能力注册到asc中
+	// 遍历每一个能力类，创建 Spec 设置来源和等级 再调用 GiveAbility 能力注册到 ASC 中
 	for (const TSubclassOf<UWarriorGameplayAbility>& Ability : InAbilityToGive)
 	{
 		if (!Ability) continue;

@@ -6,6 +6,7 @@
 #include "AnimInstance/WarriorBaseAnimInstance.h"
 #include "WarriorCharacterAnimInstance.generated.h"
 
+class AWarriorHeroCharacter;
 class UCharacterMovementComponent;
 class AWarriorBaseCharacter;
 /**
@@ -23,7 +24,7 @@ public:
 
 protected:
 	UPROPERTY()
-	AWarriorBaseCharacter* OwningCharacter;
+	AWarriorHeroCharacter* OwningCharacter;
 	UPROPERTY()
 	UCharacterMovementComponent* OwningMovementComponent;
 	

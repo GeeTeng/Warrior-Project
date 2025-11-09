@@ -4,12 +4,13 @@
 #include "AnimInstance/WarriorCharacterAnimInstance.h"
 
 #include "Character/WarriorBaseCharacter.h"
+#include "Character/WarriorHeroCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 
 void UWarriorCharacterAnimInstance::NativeInitializeAnimation()
 {
-	OwningCharacter =  Cast<AWarriorBaseCharacter>(TryGetPawnOwner());
+	OwningCharacter =  Cast<AWarriorHeroCharacter>(TryGetPawnOwner());
 	if (OwningCharacter)
 	{
 		OwningMovementComponent = OwningCharacter->GetCharacterMovement();
