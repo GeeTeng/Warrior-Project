@@ -4,5 +4,12 @@
 #include "Items/Weapons/WarriorHeroWeapon.h"
 
 
+void AWarriorHeroWeapon::AssignGrantedAbilitySpecHandles(const TArray<FGameplayAbilitySpecHandle>& InSpecHandles)
+{
+	GrantAbilitySpecHandles = InSpecHandles;
+}
 
-
+TArray<FGameplayAbilitySpecHandle> AWarriorHeroWeapon::GetGrantedAbilitySpecHandles() const
+{
+	return GrantAbilitySpecHandles;
+}
