@@ -4,6 +4,8 @@
 #include "Components/Combat/PawnCombatComponent.h"
 
 #include "GameplayTagContainer.h"
+#include "WarriorDebugHelper.h"
+#include "Components/BoxComponent.h"
 #include "Items/Weapons/WarriorWeaponBase.h"
 
 // 把生成好的武器注册到角色的已持有武器表中，并可选地设为当前装备武器。
@@ -39,4 +41,22 @@ AWarriorWeaponBase* UPawnCombatComponent::GetCharacterCurrentEquippedWeapon() co
 		return nullptr;
 	}
 	return GetCharacterCarriedWeaponByTag(CurrentEquippedWeaponTag);
+}
+
+void UPawnCombatComponent::ToggleWeaponCollision(bool bShouldEnable, EToggleDamageType ToggleDamageType)
+{
+	if (ToggleDamageType == EToggleDamageType::CurrentEquippedWeapon)
+	{
+		AWarriorWeaponBase* WeaponToToggle = GetCharacterCurrentEquippedWeapon();
+		check(WeaponToToggle);
+		if (bShouldEnable)
+		{
+			WeaponToToggle->GetWeaponCollisionBox()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+		}
+		else
+		{
+			WeaponToToggle->GetWeaponCollisionBox()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		}
+	}
+	// TODO: 处理碰撞
 }

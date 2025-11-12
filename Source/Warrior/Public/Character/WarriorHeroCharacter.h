@@ -21,6 +21,10 @@ class WARRIOR_API AWarriorHeroCharacter : public AWarriorBaseCharacter
 	GENERATED_BODY()
 public:
 	AWarriorHeroCharacter();
+
+	// ~ Begin IPawnCombatInterface Interface
+	virtual UPawnCombatComponent* GetPawnCombatComponent() const override;
+	// ~ End IPawnCombatInterface Interface
 	
 protected:
 	// ~ Begin APawn Interface
