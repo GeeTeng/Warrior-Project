@@ -6,11 +6,12 @@
 #include "Engine/DataAsset.h"
 #include "DataAsset_StartUpDataBase.generated.h"
 
+class UGameplayEffect;
 class UWarriorAbilitySystemComponent;
 class UWarriorGameplayAbility;
 /**
  * 角色初始能力配置数据资产
- * 角色生成/初始化时将该角色应有的能力批量注册到其ASC上
+ * 角色生成 /初始化时将该角色应有的能力批量注册到其ASC上
  */
 UCLASS()
 class WARRIOR_API UDataAsset_StartUpDataBase : public UDataAsset
@@ -26,5 +27,8 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "StartUpData")
 	TArray<TSubclassOf<UWarriorGameplayAbility>> ReactiveAbilities;
 
+	UPROPERTY(EditDefaultsOnly, Category = "StartUpData")
+	TArray<TSubclassOf<UGameplayEffect>> StartUpGameplayEffects;
+	
 	void GrantAbilities(const TArray<TSubclassOf<UWarriorGameplayAbility>>& InAbilityToGive, UWarriorAbilitySystemComponent* InASCToGive, int32 ApplyLevel = 1);
 };
