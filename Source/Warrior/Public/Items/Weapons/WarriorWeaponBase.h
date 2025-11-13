@@ -8,6 +8,8 @@
 
 class UBoxComponent;
 
+DECLARE_DELEGATE_OneParam(FOnTargetInteractedDelegate, AActor*);
+
 UCLASS()
 class WARRIOR_API AWarriorWeaponBase : public AActor
 {
@@ -18,6 +20,9 @@ public:
 	AWarriorWeaponBase();
 
 	virtual void BeginPlay() override;
+
+	FOnTargetInteractedDelegate OnWeaponHitTarget;
+	FOnTargetInteractedDelegate OnWeaponPulledFromTarget;
 protected:
 	UPROPERTY(visibleAnywhere, BlueprintReadOnly, Category = "Weapons")
 	UStaticMeshComponent* WeaponMesh;

@@ -38,7 +38,7 @@ void AWarriorWeaponBase::OnCollisionBoxBeginOverlap(UPrimitiveComponent* Overlap
 	{
 		if (WeaponOwningPawn != HitPawn)
 		{
-			Debug::Print(GetName() + TEXT("BeginOverlap") + HitPawn->GetName(), FColor::Red);
+			OnWeaponHitTarget.ExecuteIfBound(OtherActor);
 		}
 	}
 }
@@ -52,7 +52,7 @@ void AWarriorWeaponBase::OnCollisionBoxEndOverlap(UPrimitiveComponent* Overlappe
 	{
 		if (WeaponOwningPawn != HitPawn)
 		{
-			Debug::Print(GetName() + TEXT("EndOverlap") + HitPawn->GetName(), FColor::Green);
+			OnWeaponPulledFromTarget.ExecuteIfBound(OtherActor);
 		}
 	}
 }
