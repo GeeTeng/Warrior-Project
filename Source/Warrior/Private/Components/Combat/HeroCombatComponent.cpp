@@ -40,11 +40,19 @@ void UHeroCombatComponent::OnHitTargetActor(AActor* HitActor)
 		GetOwningPawn(),
 		WarriorGameplayTags::Shared_Event_MeleeHit,
 		Data
-		);
+	);
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(
+		GetOwningPawn(),
+		WarriorGameplayTags::Player_Event_HitPause,
+		FGameplayEventData()
+	);
 }
 
 void UHeroCombatComponent::OnWeaponPulledFromTargetActor(AActor* InteractedActor)
 {
-	Super::OnWeaponPulledFromTargetActor(InteractedActor);
-	Debug::Print(GetOwningPawn()->GetActorNameOrLabel() + InteractedActor->GetActorNameOrLabel(), FColor::Green);
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(
+	GetOwningPawn(),
+	WarriorGameplayTags::Player_Event_HitPause,
+	FGameplayEventData()
+	);
 }
