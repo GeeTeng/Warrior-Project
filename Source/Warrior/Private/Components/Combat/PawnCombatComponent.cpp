@@ -4,7 +4,6 @@
 #include "Components/Combat/PawnCombatComponent.h"
 
 #include "GameplayTagContainer.h"
-#include "WarriorDebugHelper.h"
 #include "Components/BoxComponent.h"
 #include "Items/Weapons/WarriorWeaponBase.h"
 

@@ -11,7 +11,9 @@ void UDataAsset_StartUpDataBase::GiveToAbilitySystemComponent(UWarriorAbilitySys
                                                               int32 ApplyLevel)
 {
 	check(InASCToGive);
+	// UI显示 武器生成能力
 	GrantAbilities(ActivateOnGivenAbilities, InASCToGive, ApplyLevel);
+	// 受击能力
 	GrantAbilities(ReactiveAbilities, InASCToGive, ApplyLevel);
 
 	if (!StartUpGameplayEffects.IsEmpty())
@@ -43,6 +45,7 @@ void UDataAsset_StartUpDataBase::GrantAbilities(const TArray<TSubclassOf<UWarrio
 		FGameplayAbilitySpec AbilitySpec(Ability);
 		AbilitySpec.SourceObject = InASCToGive->GetAvatarActor();
 		AbilitySpec.Level = ApplyLevel;
+		// 装备技能 但不执行
 		InASCToGive->GiveAbility(AbilitySpec);
 	}
 }
